@@ -1,3 +1,2 @@
-te^^^^^tblob
+textblob
 twython
-twitter

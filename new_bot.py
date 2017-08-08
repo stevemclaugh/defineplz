@@ -9,7 +9,6 @@ APP_SECRET = "bciq6fRGWx3Mgto6Hh3082bdSytuApkJ81h2HlAPOmx6uI9iz5"
 OAUTH_TOKEN = "894946933449555968-h2hTsuaqlGUigG8n47QOTcK2YsVwhwa"
 OAUTH_TOKEN_SECRET = "nn9PPiebrt8aKojohW8D9Oj5TTQHzEu2Xy8gf8GuRfKtK"
 
-
 import os
 os.chdir('/Users/mclaugh/Documents/GitHub/defineplz/')
 
@@ -59,7 +58,6 @@ def find_keywords_in_tweets(p_tweets, p_trigger_words):
 
 
 while True:
-
 	tweet_stems = open('stem_list.txt').read().splitlines()
 	trigger_words = get_frenchenglish_triggerwords()
 	used_trigger_words = open('used_trigger_words.txt').read().splitlines()
@@ -79,12 +77,20 @@ while True:
 				stem = random.choice(tweet_stems)
 				new_status_text = stem.replace('^^^^^', word)
 				print(new_status_text)
-				#twitter.update_status(status='See how easy using Twython is!')
+				tweet_id = status['id']
+                try:
+                    a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
+                    print(a)
+                except TwythonError as e:
+                    print(e)
+                #twitter.update_status(status='See how easy using Twython is!')
 				with open('used_trigger_words.txt', 'a') as fo:
 					fo.write(word)
 					fo.write('\n')
-
-	#time.sleep(700+(random.random()*600))
+                break
+                break
+    break
+	time.sleep(700+(random.random()*600))
 
 
 
