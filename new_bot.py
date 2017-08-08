@@ -4,11 +4,10 @@ import random
 import string
 from textblob import TextBlob
 
-APP_KEY = ""
-APP_SECRET = ""
-OAUTH_TOKEN = ""
-OAUTH_TOKEN_SECRET = ""
-
+APP_KEY = "yYX1PmePymDUOleMXDkO0G6qt"
+APP_SECRET = "bciq6fRGWx3Mgto6Hh3082bdSytuApkJ81h2HlAPOmx6uI9iz5"
+OAUTH_TOKEN = "894946933449555968-h2hTsuaqlGUigG8n47QOTcK2YsVwhwa"
+OAUTH_TOKEN_SECRET = "nn9PPiebrt8aKojohW8D9Oj5TTQHzEu2Xy8gf8GuRfKtK"
 
 
 def strip_punctuation_lowercase(p_word):
@@ -40,12 +39,15 @@ while True:
 
 	twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 
-	tweets = twitter.search(q='#dh2017')
+	tweet_dict = twitter.search(q='#dh2017')
 
-	tweet = "Honestly, that they would host a conference banquet at a place with a dress code tells me I wouldn't want to attend #dh2017."
+	statuses = tweet_dict['statuses']
 
-	for tweet in tweets:
-		blob = TextBlob(tweet)
+	for status in statuses:
+		tweet_text = status['text']
+		print(item['text'])
+
+		blob = TextBlob(tweet_text)
 		for word in blob.words:
 			if word in trigger_words:
 
