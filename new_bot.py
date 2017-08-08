@@ -10,7 +10,7 @@ OAUTH_TOKEN = "894946933449555968-h2hTsuaqlGUigG8n47QOTcK2YsVwhwa"
 OAUTH_TOKEN_SECRET = "nn9PPiebrt8aKojohW8D9Oj5TTQHzEu2Xy8gf8GuRfKtK"
 
 import os
-os.chdir('/Users/mclaugh/Documents/GitHub/defineplz/')
+os.chdir('/home/defineplz/')
 
 
 def strip_punctuation_lowercase(p_word):
@@ -97,7 +97,7 @@ def get_matching_status(statuses):
 
 
 while True:
-for i in range(1):
+    time.sleep(700+(random.random()*600))
     tweet_stems = get_englishfrench_sentences_separated()['english']
     trigger_words = [item.lower() for item in get_englishfrench_triggerwords_separated()['english']]
     used_trigger_words = [item.lower() for item in open('used_trigger_words.txt').read().splitlines()]
@@ -120,7 +120,7 @@ for i in range(1):
     with open('used_trigger_words.txt', 'a') as fo:
         fo.write(word)
         fo.write('\n')
-    time.sleep(700+(random.random()*600))
+
 
 
 
