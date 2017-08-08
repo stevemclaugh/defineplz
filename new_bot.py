@@ -64,13 +64,17 @@ def get_englishfrench_sentences_separated():
         for line in lines:
             if len(line.strip()) == 0:
                 continue
-            sentences = line.split("\t")
+            sentences = line.split("|")
             if len(sentences) >= 2:
                 spl_sentence = strip_punctuation_lowercase(sentences[0])
                 fe_sentences["english"].append(spl_sentence)
                 spl_sentence = strip_punctuation_lowercase(sentences[1])
                 fe_sentences["french"].append(spl_sentence)
+<<<<<<< HEAD
     return fe_sentences
+=======
+    return fe_sentences  
+>>>>>>> 5f93e2ac7c6e62f9fca3974a558072d9cafb2da1
 
 
 def find_keywords_in_tweets(p_tweets, p_trigger_words):
