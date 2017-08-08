@@ -31,17 +31,32 @@ def get_noun_phrases_with_word(p_text, p_word):
     return np_list
 
 
+tweet_stems = open('stem_list.txt').read().splitlines()
+trigger_words = "X" ##Parser goes here
 
 
 while True:
 
-	trigger_words = "X" ##Parser goes here
 
 	twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 
 	tweets = twitter.search(q='#dh2017')
 
-	for
+	tweet = "Honestly, that they would host a conference banquet at a place with a dress code tells me I wouldn't want to attend #dh2017."
+
+	for tweet in tweets:
+		blob = TextBlob(tweet)
+		for word in blob.words:
+			if word in trigger_words:
+
+				stem = random.choice(tweet_stems)
+
+
+				twitter.update_status(status='See how easy using Twython is!')
+
+
+
+
 
 
 	with open('used_trigger_words.txt', 'a') as fo:
@@ -60,10 +75,6 @@ while True:
 
 
 
-
-
-
-twitter.update_status(status='See how easy using Twython is!')
 
 
 
