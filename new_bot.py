@@ -45,7 +45,6 @@ def get_frenchenglish_triggerwords():
 
 
 def get_englishfrench_triggerwords_separated():
-
     fe_trigger_words = {"english":[], "french":[]}
     with open("trigger_words.txt", "rU") as trigger_file:
         lines = trigger_file.readlines()
@@ -59,7 +58,6 @@ def get_englishfrench_triggerwords_separated():
     return fe_trigger_words
 
 def get_englishfrench_sentences_separated():
-
     fe_sentences = {"english":[], "french":[]}
     with open("english_french_sentences.txt", "rU") as sentence_file:
         lines = sentence_file.readlines()
@@ -72,7 +70,7 @@ def get_englishfrench_sentences_separated():
                 fe_sentences["english"].append(spl_sentence)
                 spl_sentence = strip_punctuation_lowercase(sentences[1])
                 fe_sentences["french"].append(spl_sentence)
-    return fe_sentences    
+    return fe_sentences
 
 
 def find_keywords_in_tweets(p_tweets, p_trigger_words):
@@ -88,15 +86,17 @@ def find_keywords_in_tweets(p_tweets, p_trigger_words):
 
 while True:
 for i in range(30):
-    tweet_stems = open('stem_list.txt').read().splitlines()
-    trigger_words = get_frenchenglish_triggerwords()
+    tweet_stems = open('stem_list.txt').read().splitlines() #get_englishfrench_sentences_separated()
+    trigger_words = get_englishfrench_triggerwords_separated()['english']
     used_trigger_words = open('used_trigger_words.txt').read().splitlines()
     twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
     tweet_dict = twitter.search(q='#dh2017')
     #statuses = [{"text":'This bagel is fabulous.'}]
     statuses = tweet_dict['statuses']
+    random.shuffle(statuses)
+    #status = random.choice(statuses)
     for status in statuses:
-        tweet_text = status['text']
+        tweet_text = status['text'].strip()
         blob = TextBlob(tweet_text)
         for word in list(blob.words):
             if (word in trigger_words) & (word not in used_trigger_words):
@@ -104,10 +104,13 @@ for i in range(30):
                 stem = random.choice(tweet_stems)
                 #print(stem)
                 new_status_text = stem.replace('^^^^^', word)
-                print(new_status_text)
+                #print(new_status_text)
                 tweet_id = status['id']
-                try: print(new_status_text)
-                except: pass
+                try:
+                    print(new_status_text + ' #DH2017')
+                    break
+                    break
+                    break
                     #a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
                     #print(a)
                 except TwythonError as e:
