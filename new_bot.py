@@ -46,6 +46,37 @@ def get_frenchenglish_triggerwords():
     return fe_trigger_words
 
 
+def get_englishfrench_triggerwords_separated():
+
+    fe_trigger_words = {"english":[], "french":[]}
+    with open("trigger_words.txt", "rU") as trigger_file:
+        lines = trigger_file.readlines()
+        for line in lines:
+            words = line.split()
+            if len(words) >= 2:
+                spl_word = strip_punctuation_lowercase(words[0])
+                fe_trigger_words["english"].append(spl_word)
+                spl_word = strip_punctuation_lowercase(words[1])
+                fe_trigger_words["french"].append(spl_word)
+    return fe_trigger_words
+
+def get_englishfrench_sentences_separated():
+
+    fe_sentences = {"english":[], "french":[]}
+    with open("english_french_sentences.txt", "rU") as sentence_file:
+        lines = sentence_file.readlines()
+        for line in lines:
+            if len(line.strip()) == 0:
+                continue
+            sentences = line.split("\t")
+            if len(sentences) >= 2:
+                spl_sentence = strip_punctuation_lowercase(sentences[0])
+                fe_sentences["english"].append(spl_sentence)
+                spl_sentence = strip_punctuation_lowercase(sentences[1])
+                fe_sentences["french"].append(spl_sentence)
+    return fe_sentences    
+
+
 def find_keywords_in_tweets(p_tweets, p_trigger_words):
     found_tweets = []
     for t in p_tweets:
