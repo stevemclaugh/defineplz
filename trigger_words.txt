@@ -1,4 +1,4 @@
-Acces        Accès ´
+Acces        Accès
 Hidden        Caché
 Debt        dette
 Pedagogy    pédagogie
@@ -10,7 +10,7 @@ Technology    technologie
 Conference    conference
 Novel        roman
 Digital        numérique
-Network    réseau^^^^^
+Network    réseaux
 Vibe        vibe
 Poutine    poutine
 Data        les données
