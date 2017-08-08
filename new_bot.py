@@ -15,7 +15,7 @@ os.chdir('/Users/mclaugh/Documents/GitHub/defineplz/')
 
 def strip_punctuation_lowercase(p_word):
     # Clear leading/trailing whitespace and punctuation, and make lowercase
-    return p_word.strip().strip(string.punctuation).lower()
+    return p_word  #.strip().strip().lower()
 
 def noun_phrase_extract(p_text):
     from textblob import TextBlob
@@ -25,7 +25,7 @@ def noun_phrase_extract(p_text):
 def get_noun_phrases_with_word(p_text, p_word):
     from textblob import TextBlob
     blob = TextBlob(p_text)
-    spl_word = strip_punctuation_lowercase(p_word)
+    spl_word = p_word strip_punctuation_lowercase(p_word)
     np_list = []
     for np in blob.noun_phrases:
         if spl_word in strip_punctuation_lowercase(np):
@@ -84,71 +84,42 @@ def find_keywords_in_tweets(p_tweets, p_trigger_words):
     return found_tweets
 
 
-while True:
-for i in range(30):
-    tweet_stems = open('stem_list.txt').read().splitlines() #get_englishfrench_sentences_separated()
-    trigger_words = get_englishfrench_triggerwords_separated()['english']
-    used_trigger_words = open('used_trigger_words.txt').read().splitlines()
-    twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
-    tweet_dict = twitter.search(q='#dh2017')
-    #statuses = [{"text":'This bagel is fabulous.'}]
-    statuses = tweet_dict['statuses']
+def get_matching_status(statuses):
     random.shuffle(statuses)
-    #status = random.choice(statuses)
-    for status in statuses:
-        tweet_text = status['text'].strip()
-        blob = TextBlob(tweet_text)
-        for word in list(blob.words):
-            if (word in trigger_words) & (word not in used_trigger_words):
-                #print(word)
-                stem = random.choice(tweet_stems)
-                #print(stem)
-                new_status_text = stem.replace('^^^^^', word)
-                #print(new_status_text)
-                tweet_id = status['id']
-                #try:
-                print(new_status_text + ' #DH2017')
-                    break
-                    break
-                    #a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
-                    #print(a)
-                #except TwythonError as e:
-                    print(e)
-                    break
-                    break
-                #twitter.update_status(status='See how easy using Twython is!')
-                with open('used_trigger_words.txt', 'a') as fo:
-                    fo.write(word)
-                    fo.write('\n')
-                break
-                break
-    break
-    time.sleep(700+(random.random()*600))
-
-
-
-
-
-
-
-
+    status_dict = {}
     for status in statuses:
         tweet_text = status['text']
-        print(item['text'])
-
         blob = TextBlob(tweet_text)
-        for word in blob.words:
-            if (word in trigger_words) & (word not in used_trigger_words):
+        for word in list(blob.words):
+            if (word.lower() in trigger_words) & (word.lower() not in used_trigger_words):
+                return (word, status)
 
-                stem = random.choice(tweet_stems)
-                stem.replace('^^^^^', word)
-                print(new_status_text)
-                #twitter.update_status(status='See how easy using Twython is!')
 
-                with open('used_trigger_words.txt', 'a') as fo:
-                    fo.write(trigger_word)
-                    fo.write('\n')
 
+while True:
+for i in range(1):
+    tweet_stems = get_englishfrench_sentences_separated()['english']
+    trigger_words = [item.lower() for item in get_englishfrench_triggerwords_separated()['english']]
+    used_trigger_words = [item.lower() for item in open('used_trigger_words.txt').read().splitlines()]
+    twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+    tweet_dict = twitter.search(q='#dh2017')
+    statuses = tweet_dict['statuses']
+    status_pair = get_matching_status(statuses)
+    word, status_dict = status_pair
+    status_text = status_dict['text']
+    handle = '@' + status_dict['user']['screen_name']
+    stem = random.choice(tweet_stems)
+    new_status_text = handle + ' ' + stem.replace('^^^^^', word.lower()) + ' #dh2017'
+    #print(new_status_text)
+    tweet_id = status_dict['id']
+    #try:
+    print(new_status_text)
+    a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
+    pprint(a)
+    #except:
+    with open('used_trigger_words.txt', 'a') as fo:
+        fo.write(word)
+        fo.write('\n')
     time.sleep(700+(random.random()*600))
 
 

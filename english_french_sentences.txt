@@ -1,22 +1,22 @@
-Yes, but how do you define X?|Oui, mais comment définissez-vous X?
-Is X on the dark side of DH?|Est-ce que X est le côté obscur du DH?
-Can you clarify what you mean by X?|Pouvez-vous clarifier ce que vous voulez dire par X?
-X is so meta!|X est tellement meta!
-<irony>Oh! X</irony>|<irony>Oh! X</irony>
-How would you markup X in TEI?|Comment feriez-vous le balisage de X dans TEI?
-Let’s use machine learning on X|Utilisons machine learning dans X? 
-What is the value of X?|Quelle est la valeur de X?
-How would you interpretatively tag X?|Comment interprétez-vous X de manière interprétative?
-What’s the social network of X?|Quel est le réseau social de X?
-Can we train a machine to find X?|Peut-on former une machine pour trouver X?
-Canadians are so nice, until it comes to X.|Les Canadiens sont si gentils, jusqu'à X?
-Sure, but can you define X?|Bien sûr, mais pouvez-vous définir X?
-Have you considered that X could be defined differently?|Avez-vous considéré le fait que X pourrait être défini différemment?
-I’m new to DH, but in my field we have theorized X|Je suis un novice dans le DH, mais dans mon domaine, nous avons théorisé X
-Can we hack X?|Pouvons-nous pirater X ou avons-nous besoin de nous discuter de ça?
-I liked that, but can you talk more about X?|J’ai bien apprécié cela, mais pouvez-vous en dire plus sur X?
-Interesting...in my field, X is defined differently.|Intéressant ... dans mon domaine, X est défini différemment.
-Where do you see X going in the future?|Où voyez-vous X dans l'avenir?
-What are the affordances of X?|Quels sont les capabilités de X?
-Can we do a usability study of X?|Avez-vous fait le test d’ergonomie digitale d’X?
-How do we say "x" en Anglais?|Comment dit-on “x” en Français?
+Yes, but how do you define ^^^^^?|Oui, mais comment définissez-vous ^^^^^?
+Is ^^^^^ on the dark side of DH?|Est-ce que ^^^^^ est le côté obscur du DH?
+Can you clarify what you mean by ^^^^^?|Pouvez-vous clarifier ce que vous voulez dire par ^^^^^?
+^^^^^ is so meta!|^^^^^ est tellement meta!
+<irony>Oh! ^^^^^</irony>|<irony>Oh! ^^^^^</irony>
+How would you markup ^^^^^ in TEI?|Comment feriez-vous le balisage de ^^^^^ dans TEI?
+Let’s use machine learning on ^^^^^|Utilisons machine learning dans ^^^^^?
+What is the value of ^^^^^?|Quelle est la valeur de ^^^^^?
+How would you interpretatively tag ^^^^^?|Comment interprétez-vous ^^^^^ de manière interprétative?
+What’s the social network of ^^^^^?|Quel est le réseau social de ^^^^^?
+Can we train a machine to find ^^^^^?|Peut-on former une machine pour trouver ^^^^^?
+Canadians are so nice, until it comes to ^^^^^.|Les Canadiens sont si gentils, jusqu'à ^^^^^?
+Sure, but can you define ^^^^^?|Bien sûr, mais pouvez-vous définir ^^^^^?
+Have you considered that ^^^^^ could be defined differently?|Avez-vous considéré le fait que ^^^^^ pourrait être défini différemment?
+I’m new to DH, but in my field we have theorized ^^^^^|Je suis un novice dans le DH, mais dans mon domaine, nous avons théorisé ^^^^^
+Can we hack ^^^^^?|Pouvons-nous pirater ^^^^^ ou avons-nous besoin de nous discuter de ça?
+I liked that, but can you talk more about ^^^^^?|J’ai bien apprécié cela, mais pouvez-vous en dire plus sur ^^^^^?
+Interesting...in my field, ^^^^^ is defined differently.|Intéressant ... dans mon domaine, ^^^^^ est défini différemment.
+Where do you see ^^^^^ going in the future?|Où voyez-vous ^^^^^ dans l'avenir?
+What are the affordances of ^^^^^?|Quels sont les capabilités de ^^^^^?
+Can we do a usability study of ^^^^^?|Avez-vous fait le test d’ergonomie digitale d’^^^^^?
+How do we say "^^^^^" en Anglais?|Comment dit-on “^^^^^” en Français?
