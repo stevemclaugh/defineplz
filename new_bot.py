@@ -70,11 +70,7 @@ def get_englishfrench_sentences_separated():
                 fe_sentences["english"].append(spl_sentence)
                 spl_sentence = strip_punctuation_lowercase(sentences[1])
                 fe_sentences["french"].append(spl_sentence)
-<<<<<<< HEAD
     return fe_sentences
-=======
-    return fe_sentences  
->>>>>>> 5f93e2ac7c6e62f9fca3974a558072d9cafb2da1
 
 
 def find_keywords_in_tweets(p_tweets, p_trigger_words):
@@ -110,15 +106,16 @@ for i in range(30):
                 new_status_text = stem.replace('^^^^^', word)
                 #print(new_status_text)
                 tweet_id = status['id']
-                try:
-                    print(new_status_text + ' #DH2017')
-                    break
+                #try:
+                print(new_status_text + ' #DH2017')
                     break
                     break
                     #a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
                     #print(a)
-                except TwythonError as e:
+                #except TwythonError as e:
                     print(e)
+                    break
+                    break
                 #twitter.update_status(status='See how easy using Twython is!')
                 with open('used_trigger_words.txt', 'a') as fo:
                     fo.write(word)
