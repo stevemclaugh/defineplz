@@ -10,7 +10,7 @@ Technology    technologie
 Conference    conference
 Novel        roman
 Digital        numérique
-Network    réseaux
+Network    réseau^^^^^
 Vibe        vibe
 Poutine    poutine
 Data        les données
