@@ -3,7 +3,7 @@ Hidden        Caché
 Debt        dette
 Pedagogy    pédagogie
 Issue        problème
-Space                espace
+Spatial                espace
 Archive    archive
 Library        bibliothèque
 Technology    technologie

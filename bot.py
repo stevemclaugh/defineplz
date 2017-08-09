@@ -5,6 +5,7 @@ import datetime
 import random
 import string
 import os
+from pprint import pprint
 
 APP_KEY = "yYX1PmePymDUOleMXDkO0G6qt"
 APP_SECRET = "bciq6fRGWx3Mgto6Hh3082bdSytuApkJ81h2HlAPOmx6uI9iz5"
@@ -67,6 +68,7 @@ def get_sentence_templates_separated():
 
 def get_matching_status(status_list):
     random.shuffle(status_list)
+    sentence_dict = get_sentence_templates_separated()
     for status_dict in status_list:
         tweet_id = status_dict['id']
         tweet_text = status_dict['text']
@@ -76,29 +78,36 @@ def get_matching_status(status_list):
         for word in words:
             if (word.lower() in eng_cliche_words) & \
                                 (word.lower() not in used_cliche_words) & \
-                                (tweet_id not in used_tweet_ids):
-                return (tweet_id, word, eng_sentence_templates, status_dict)
+                                (tweet_id not in used_tweet_ids) & \
+                                ("retweeted_status" not in status_dict):
+                return (tweet_id, word, sentence_dict["english"], status_dict)
             elif (word.lower() in fr_cliche_words) & \
                                 (word.lower() not in used_cliche_words) & \
-                                (tweet_id not in used_tweet_ids):
-                return (tweet_id, word, fr_sentence_templates, status_dict)
+                                (tweet_id not in used_tweet_ids) & \
+                                ("retweeted_status" not in status_dict):
+                return (tweet_id, word, sentence_dict["french"], status_dict)
 
 while True:
     print('~~ Starting the while loop. ~~')
     print(datetime.datetime.now().time())
     print('\n')
     try:
-        time.sleep(1100)
+        time.sleep(2000)
+        print('******')
         if 7 <= datetime.datetime.now().time().hour <= 23:
+            print('*****')
             eng_sentence_templates = get_sentence_templates_separated()['english']
             eng_cliche_words = [item.lower() for item in get_english_french_clichewords_separated()['english']]
+            fr_cliche_words = [item.lower() for item in get_english_french_clichewords_separated()['french']]
             used_cliche_words = [item.lower() for item in open('used_cliche_words.txt').read().splitlines()]
             used_tweet_ids = [int(item) for item in open('used_tweet_ids.txt').read().splitlines()]
             twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
             status_list = twitter.search(q='#dh2017', count=100)['statuses']
             try:
+                print('****')
                 tweet_id, word, sentence_templates, status_dict = get_matching_status(status_list)
             except:
+                print('***')
                 continue
             status_text = status_dict['text']
             handle = '@' + status_dict['user']['screen_name']
@@ -121,7 +130,7 @@ while True:
                 fo.write(word + '\n')
             with open('used_tweet_ids.txt', 'a') as fo:
                 fo.write(str(tweet_id) + '\n')
-        time.sleep(2000 + (random.random()*200))
+        time.sleep(3100 + (random.random()*200))
     except:
         print("ERROR ...")
-        time.sleep(2000 + (random.random()*200))
+        time.sleep(1100 + (random.random()*200))
