@@ -82,7 +82,7 @@ def get_matching_status(status_list):
 
 while True:
     try:
-        time.sleep(1800 + (random.random()*100))
+        time.sleep(1100)
         if 7 <= datetime.datetime.now().time().hour <= 23:
             eng_sentence_templates = get_sentence_templates_separated()['english']
             eng_cliche_words = [item.lower() for item in get_english_french_clichewords_separated()['english']]
@@ -112,7 +112,7 @@ while True:
                 fo.write(word + '\n')
             with open('used_tweet_ids.txt', 'a') as fo:
                 fo.write(str(tweet_id) + '\n')
-        time.sleep(1350 + (random.random()*100))
+        time.sleep(2000 + (random.random()*200))
     except:
         print("ERROR ...")
-        time.sleep(1350 + (random.random()*100))
+        time.sleep(2000 + (random.random()*200))
