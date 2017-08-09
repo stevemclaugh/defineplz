@@ -107,11 +107,9 @@ def get_candidate_noun_phrase(status_dict):
                       ("’ " not in phrase) & ("http" not in phrase) & \
                       (". " not in phrase) & ("2017" not in phrase) & \
                       ("..." not in phrase) & ("/" not in phrase) & \
-                      ("re-" not in phrase) & ('…' not in phrase):
+                      ("re-" not in phrase) & ('…' not in phrase) & ('@' not in phrase):
                 candidate_phrases.append(phrase.replace(" 's","'s").strip("'").strip('"'))
     return candidate_phrases
-
-
 
 
 
