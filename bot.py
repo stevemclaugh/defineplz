@@ -1,5 +1,6 @@
 from twython import Twython
 from textblob import TextBlob
+import urllib.request
 import time
 import datetime
 import random
@@ -17,6 +18,13 @@ except: pass
 
 try: os.chdir('/home/defineplz/')
 except: pass
+
+commmon_words_url = 'https://raw.githubusercontent.com/first20hours/google-10000-english/master/google-10000-english.txt'
+
+response = urllib.request.urlopen(commmon_words_url)
+data = response.read()
+common_words = [item.lower() for item in data.decode('utf-8').splitlines()]
+
 
 def get_noun_phrases(p_text):
     blob = TextBlob(p_text)
@@ -87,12 +95,34 @@ def get_matching_status(status_list):
                                 ("retweeted_status" not in status_dict):
                 return (tweet_id, word, sentence_dict["french"], status_dict)
 
+def get_candidate_noun_phrase(status_dict):
+    phrases = [status_dict['text']]
+    blacklist = "http https #dh2017 dh2017 ’ s l… https rt re-"
+    lol = [get_noun_phrases(item) for item in phrases]
+    lol = [[item for item in phrase_list if (item.lower() not in blacklist)&(item.lower() not in common_words)] for phrase_list in lol]
+    candidate_phrases = []
+    for phrases in lol:
+        for phrase in phrases:
+            if ('#' not in phrase) & ('@' not in phrase) & \
+                      ("’ " not in phrase) & ("http" not in phrase) & \
+                      (". " not in phrase) & ("2017" not in phrase) & \
+                      ("..." not in phrase) & ("/" not in phrase) & \
+                      ("re-" not in phrase) & ('…' not in phrase):
+                candidate_phrases.append(phrase.replace(" 's","'s").strip("'").strip('"'))
+    return candidate_phrases
+
+
+
+
+
+
+
 while True:
-    print('~~ Starting the while loop. ~~')
-    print(datetime.datetime.now().time())
-    print('\n')
-    try:
-        time.sleep(2000)
+    #print('~~ Starting the while loop. ~~')
+    #print(datetime.datetime.now().time())
+    #print('\n')
+    #try:
+        time.sleep(0)
         print('******')
         if 7 <= datetime.datetime.now().time().hour <= 23:
             print('*****')
@@ -112,11 +142,12 @@ while True:
             status_text = status_dict['text']
             handle = '@' + status_dict['user']['screen_name']
             print('ORIGINAL: ' + status_text)
+            noun_phrase = random.choice(get_candidate_noun_phrase(status_dict))
             new_status_text = ''
             i = 0
             while (len(new_status_text) == 0) | (len(new_status_text) > 140):  ## Risk of infinite loop here
                 sentence_template = random.choice(sentence_templates)
-                new_status_text = handle + ' ' + sentence_template.replace('^^^^^', word.lower()) + ' #dh2017'
+                new_status_text = handle + ' ' + sentence_template.replace('^^^^^', noun_phrase) + ' #dh2017'
                 i += 1
                 if i > 1000: continue
             try:
@@ -127,10 +158,11 @@ while True:
                 print("** Error for this Tweet: **")
                 print(new_status_text)
             with open('used_cliche_words.txt', 'a') as fo:
-                fo.write(word + '\n')
+                #fo.write(word + '\n')
+                fo.write(noun_phrase + '\n')
             with open('used_tweet_ids.txt', 'a') as fo:
                 fo.write(str(tweet_id) + '\n')
         time.sleep(3100 + (random.random()*200))
-    except:
-        print("ERROR ...")
-        time.sleep(1100 + (random.random()*200))
+    #except Exception as e:
+    #    except Exception as e: print(e)
+        #time.sleep(3100 + (random.random()*200))
