@@ -45,7 +45,7 @@ Millennials     enfants du millénaire
 Methodology    Methodology
 Studies    études
 Virtual Reality    Réalité virtuelle
-Videogames    Jeux vidéo
+Video games    Jeux vidéo
 Humanities    Humanités
 Affordances    capabilités
 Empathy    Empathie
@@ -64,3 +64,4 @@ Students    étudiant
 Computer    Ordinateur
 Ebook              Ebook
 BIXI                  BIXI
+crowdsourcing
