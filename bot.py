@@ -77,34 +77,38 @@ def get_matching_status(status_list):
                 return (tweet_id, word, status_dict)
 
 while True:
-    time.sleep(1800 + (random.random()*100))
-    if 7 <= datetime.datetime.now().time().hour <= 23:
-        eng_sentence_templates = get_sentence_templates_separated()['english']
-        eng_cliche_words = [item.lower() for item in get_english_french_clichewords_separated()['english']]
-        used_cliche_words = [item.lower() for item in open('used_cliche_words.txt').read().splitlines()]
-        used_tweet_ids = [int(item) for item in open('used_tweet_ids.txt').read().splitlines()]
-        twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
-        status_list = twitter.search(q='#dh2017', count=100)['statuses']
-        try:
-            tweet_id, word, status_dict = get_matching_status(status_list)
-        except:
-            continue
-        status_text = status_dict['text']
-        handle = '@' + status_dict['user']['screen_name']
-        print('ORIGINAL: ' + status_text)
-        new_status_text = ''
-        while (len(new_status_text) == 0) | (len(new_status_text) > 140):
-            sentence_template = random.choice(eng_sentence_templates)
-            new_status_text = handle + ' ' + sentence_template.replace('^^^^^', word.lower()) + ' #dh2017'
-        try:
-            print('*** BOT POST *** ' + new_status_text)
-            a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
-            pprint(a)
-        except:
-            print("** Error for this Tweet: **")
-            print(new_status_text)
-        with open('used_cliche_words.txt', 'a') as fo:
-            fo.write(word + '\n')
-        with open('used_tweet_ids.txt', 'a') as fo:
-            fo.write(str(tweet_id) + '\n')
-    time.sleep(1350 + (random.random()*100))
+    try:
+        time.sleep(1800 + (random.random()*100))
+        if 7 <= datetime.datetime.now().time().hour <= 23:
+            eng_sentence_templates = get_sentence_templates_separated()['english']
+            eng_cliche_words = [item.lower() for item in get_english_french_clichewords_separated()['english']]
+            used_cliche_words = [item.lower() for item in open('used_cliche_words.txt').read().splitlines()]
+            used_tweet_ids = [int(item) for item in open('used_tweet_ids.txt').read().splitlines()]
+            twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+            status_list = twitter.search(q='#dh2017', count=100)['statuses']
+            try:
+                tweet_id, word, status_dict = get_matching_status(status_list)
+            except:
+                continue
+            status_text = status_dict['text']
+            handle = '@' + status_dict['user']['screen_name']
+            print('ORIGINAL: ' + status_text)
+            new_status_text = ''
+            while (len(new_status_text) == 0) | (len(new_status_text) > 140):
+                sentence_template = random.choice(eng_sentence_templates)
+                new_status_text = handle + ' ' + sentence_template.replace('^^^^^', word.lower()) + ' #dh2017'
+            try:
+                print('*** BOT POST *** ' + new_status_text)
+                a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
+                pprint(a)
+            except:
+                print("** Error for this Tweet: **")
+                print(new_status_text)
+            with open('used_cliche_words.txt', 'a') as fo:
+                fo.write(word + '\n')
+            with open('used_tweet_ids.txt', 'a') as fo:
+                fo.write(str(tweet_id) + '\n')
+        time.sleep(1350 + (random.random()*100))
+    except:
+        print("ERROR ...")
+        time.sleep(1350 + (random.random()*100))
