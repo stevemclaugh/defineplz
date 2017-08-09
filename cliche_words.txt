@@ -27,18 +27,40 @@ Privacy    confidentiel
 Encouraging    Encourageant
 Hacking    piratage
 Support    Soutenir
-Mapping
-Analysis
-Funding
-Structure
-Copyright
-Scale
-Community
-Sustainability
-Affordance
-Open access
-Virtual
-Biosphere
-Scholarly
-infrastructure
-collaboration
+Mapping    tracer
+Analysis    Analiser
+Funding    Financement
+Structural    Structure
+Copyright    droit d'auteur
+Scale        échelle
+Community    communauté
+Sustainability    Durabilité
+Affordance    capabilité
+Open access    accès libre
+Virtual        virtuelle
+Biosphere    Biosphère
+Scholarly    académique
+Visualization    Visualisation
+Millennials     enfants du millénaire
+Methodology    Methodology
+Studies    études
+Virtual Reality    Réalité virtuelle
+Videogames    Jeux vidéo
+Humanities    Humanités
+Affordances    capabilités
+Empathy    Empathie
+Digital projects    Projets numériques
+Dig projects    Projects numériques
+WordPress    WordPress
+Curate        organiser le contenu
+Translate    Traduire
+Sustainable    Durable
+TEI        TEI
+XML        XML
+Discipline    Discipline
+Playing    Jouer
+Literature    Littérature
+Students    étudiant
+Computer    Ordinateur
+Ebook              Ebook
+BIXI                  BIXI
