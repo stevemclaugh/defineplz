@@ -104,9 +104,12 @@ while True:
             handle = '@' + status_dict['user']['screen_name']
             print('ORIGINAL: ' + status_text)
             new_status_text = ''
+            i = 0
             while (len(new_status_text) == 0) | (len(new_status_text) > 140):  ## Risk of infinite loop here
                 sentence_template = random.choice(sentence_templates)
                 new_status_text = handle + ' ' + sentence_template.replace('^^^^^', word.lower()) + ' #dh2017'
+                i += 1
+                if i > 1000: continue
             try:
                 print('*** BOT POST *** ' + new_status_text)
                 a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
