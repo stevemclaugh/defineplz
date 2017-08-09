@@ -84,6 +84,9 @@ def get_matching_status(status_list):
                 return (tweet_id, word, fr_sentence_templates, status_dict)
 
 while True:
+    print('~~ Starting the while loop. ~~')
+    print(datetime.datetime.now().time())
+    print('\n')
     try:
         time.sleep(1100)
         if 7 <= datetime.datetime.now().time().hour <= 23:
