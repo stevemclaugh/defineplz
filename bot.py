@@ -9,9 +9,9 @@ import os
 from pprint import pprint
 
 APP_KEY = "yYX1PmePymDUOleMXDkO0G6qt"
-APP_SECRET = "bciq6fRGWx3Mgto6Hh3082bdSytuApkJ81h2HlAPOmx6uI9iz5"
+APP_SECRET = ""
 OAUTH_TOKEN = "894946933449555968-h2hTsuaqlGUigG8n47QOTcK2YsVwhwa"
-OAUTH_TOKEN_SECRET = "nn9PPiebrt8aKojohW8D9Oj5TTQHzEu2Xy8gf8GuRfKtK"
+OAUTH_TOKEN_SECRET = ""
 
 try: os.chdir(os.path.expanduser('~/Documents/GitHub/defineplz'))
 except: pass
@@ -152,8 +152,8 @@ while True:
                 if i > 1000: continue
             try:
                 print('*** BOT POST *** ' + new_status_text)
-                a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
-                pprint(a)
+                #a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
+                #pprint(a)
             except:
                 print("** Error for this Tweet: **")
                 print(new_status_text)
@@ -165,4 +165,7 @@ while True:
         time.sleep(3100 + (random.random()*200))
     #except Exception as e:
     #    except Exception as e: print(e)
-        #time.sleep(3100 + (random.random()*200))
+    #    time.sleep(3100 + (random.random()*200))
+
+## Manual post
+#a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
