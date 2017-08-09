@@ -56,10 +56,13 @@ def get_sentence_templates_separated():
     sentence_dict = {"english":[], "french":[]}
     lines = open("sentence_templates.txt", "rU").read().splitlines()
     for line in lines:
-        if '|' in line:
-            eng_sentence, fr_sentence = line.split("|")
+            eng_sentence = line.split("|")[0]
             sentence_dict["english"].append(eng_sentence)
-            sentence_dict["french"].append(fr_sentence)
+            try:
+                fr_sentence = line.split("|")[1]
+                sentence_dict["french"].append(fr_sentence)
+            except:
+                pass
     return sentence_dict
 
 def get_matching_status(status_list):

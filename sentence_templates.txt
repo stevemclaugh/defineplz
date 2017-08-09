@@ -3,7 +3,7 @@ Is ^^^^^ on the dark side of DH?|Est-ce que ^^^^^ est le côté obscur du DH?
 Can you clarify what you mean by ^^^^^?|Pouvez-vous clarifier ce que vous voulez dire par ^^^^^?
 ^^^^^ is so meta!|^^^^^ est tellement meta!
 <irony>Oh! ^^^^^</irony>|<irony>Oh! ^^^^^</irony>
-How would you markup ^^^^^ in TEI?|Comment feriez-vous le balisage de ^^^^^ dans TEI?
+How would you mark up ^^^^^ in TEI?|Comment feriez-vous le balisage de ^^^^^ dans TEI?
 Let’s use machine learning on ^^^^^|Utilisons machine learning dans ^^^^^?
 What is the value of ^^^^^?|Quelle est la valeur de ^^^^^?
 How would you interpretatively tag ^^^^^?|Comment interprétez-vous ^^^^^ de manière interprétative?
