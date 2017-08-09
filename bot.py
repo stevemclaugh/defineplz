@@ -72,9 +72,13 @@ def get_matching_status(status_list):
         random.shuffle(words)
         for word in words:
             if (word.lower() in eng_cliche_words) & \
-                (word.lower() not in used_cliche_words) & \
-                (tweet_id not in used_tweet_ids):
-                return (tweet_id, word, status_dict)
+                                (word.lower() not in used_cliche_words) & \
+                                (tweet_id not in used_tweet_ids):
+                return (tweet_id, word, eng_sentence_templates, status_dict)
+            elif (word.lower() in fr_cliche_words) & \
+                                (word.lower() not in used_cliche_words) & \
+                                (tweet_id not in used_tweet_ids):
+                return (tweet_id, word, fr_sentence_templates, status_dict)
 
 while True:
     try:
@@ -87,15 +91,15 @@ while True:
             twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
             status_list = twitter.search(q='#dh2017', count=100)['statuses']
             try:
-                tweet_id, word, status_dict = get_matching_status(status_list)
+                tweet_id, word, sentence_templates, status_dict = get_matching_status(status_list)
             except:
                 continue
             status_text = status_dict['text']
             handle = '@' + status_dict['user']['screen_name']
             print('ORIGINAL: ' + status_text)
             new_status_text = ''
-            while (len(new_status_text) == 0) | (len(new_status_text) > 140):
-                sentence_template = random.choice(eng_sentence_templates)
+            while (len(new_status_text) == 0) | (len(new_status_text) > 140):  ## Risk of infinite loop here
+                sentence_template = random.choice(sentence_templates)
                 new_status_text = handle + ' ' + sentence_template.replace('^^^^^', word.lower()) + ' #dh2017'
             try:
                 print('*** BOT POST *** ' + new_status_text)
