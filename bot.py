@@ -76,8 +76,8 @@ def get_matching_status(status_list):
                 (tweet_id not in used_tweet_ids):
                 return (tweet_id, word, status_dict)
 
-#while True:
-for i in range(1):
+while True:
+    time.sleep(1800 + (random.random()*100))
     if 7 <= datetime.datetime.now().time().hour <= 23:
         eng_sentence_templates = get_sentence_templates_separated()['english']
         eng_cliche_words = [item.lower() for item in get_english_french_clichewords_separated()['english']]
@@ -98,13 +98,13 @@ for i in range(1):
             new_status_text = handle + ' ' + sentence_template.replace('^^^^^', word.lower()) + ' #dh2017'
         try:
             print('*** BOT POST *** ' + new_status_text)
-            #a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
-            #pprint(a)
+            a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
+            pprint(a)
         except:
             print("** Error for this Tweet: **")
             print(new_status_text)
-        #with open('used_cliche_words.txt', 'a') as fo:
-            #fo.write(word + '\n')
-        #with open('used_tweet_ids.txt', 'a') as fo:
-            #fo.write(str(tweet_id) + '\n')
-    #time.sleep(1200 + (random.random()*600))
+        with open('used_cliche_words.txt', 'a') as fo:
+            fo.write(word + '\n')
+        with open('used_tweet_ids.txt', 'a') as fo:
+            fo.write(str(tweet_id) + '\n')
+    time.sleep(1350 + (random.random()*100))
