@@ -1,9 +1,9 @@
-Acces        Accès
+Access        Accès
 Hidden        Caché
 Debt        dette
 Pedagogy    pédagogie
 Issue        problème
-Spatial                espace
+Space                espace
 Archive    archive
 Library        bibliothèque
 Technology    technologie
@@ -30,7 +30,7 @@ Support    Soutenir
 Mapping
 Analysis
 Funding
-Structural
+Structure
 Copyright
 Scale
 Community
@@ -41,3 +41,4 @@ Virtual
 Biosphere
 Scholarly
 infrastructure
+collaboration
