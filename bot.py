@@ -116,10 +116,10 @@ def get_candidate_noun_phrase(status_dict):
 
 
 while True:
-    #print('~~ Starting the while loop. ~~')
-    #print(datetime.datetime.now().time())
-    #print('\n')
-    #try:
+    print('~~ Starting the while loop. ~~')
+    print(datetime.datetime.now().time())
+    print('\n')
+    try:
         time.sleep(0)
         print('******')
         if 7 <= datetime.datetime.now().time().hour <= 23:
@@ -150,8 +150,8 @@ while True:
                 if i > 1000: continue
             try:
                 print('*** BOT POST *** ' + new_status_text)
-                #a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
-                #pprint(a)
+                a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
+                pprint(a)
             except:
                 print("** Error for this Tweet: **")
                 print(new_status_text)
@@ -161,9 +161,9 @@ while True:
             with open('used_tweet_ids.txt', 'a') as fo:
                 fo.write(str(tweet_id) + '\n')
         time.sleep(3100 + (random.random()*200))
-    #except Exception as e:
-    #    except Exception as e: print(e)
-    #    time.sleep(3100 + (random.random()*200))
+    except Exception as e:
+        print(e)
+        time.sleep(3100 + (random.random()*200))
 
 ## Manual post
 #a = twitter.update_status(status=new_status_text, in_reply_to_status_id=tweet_id)
